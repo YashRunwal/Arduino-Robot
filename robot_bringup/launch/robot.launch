@@ -1,0 +1,8 @@
+<launch>    
+<!-- can be used as top level launch files by adding all required launch files below -->
+    <include file="$(find robot_hardware)/launch/robot_tf.launch"/>
+    <include file="$(find robot_description)/launch/robot_model.launch"/>
+    <include file="$(find robot_localization)/launch/hector_slam.launch"/>
+<!-- use the default diagnostics node -->
+
+</launch>

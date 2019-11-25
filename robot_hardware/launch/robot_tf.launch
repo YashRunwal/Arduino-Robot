@@ -1,0 +1,14 @@
+<launch>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.010 0 0 0 base_footprint base_link" />
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_wheel_left_link" args="-0.082 -0.053 0.034 0 -1.57 1.57 base_link wheel_left_link" />
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_wheel_right_link" args="-0.082 0.053 0.034 0 -1.57 -1.57 base_link wheel_right_link" />
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_imu_link" args="0.0 0 0.068 0 0 0 base_link imu_link" />
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_laser" args="-0.120 0 0.08 0 0 0 base_link laser" />
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_caster_link" args="0.01 0 0.034 -1.57 0 1.57 base_link caster_link" />
+</launch>

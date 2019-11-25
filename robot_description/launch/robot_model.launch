@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find robot_description)/urdf/robot_chassis.urdf.xacro" />
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" value="30.0"/>
+  </node>
+
+  <!-- exclude the following node if you are running turtlebot3_robot.launch as well -->
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+    <param name="rate" value="30.0"/>
+    <param name="use_gui" value="false"/>
+  </node>
+
+</launch>

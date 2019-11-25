@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="robot_wheel">
+    <xacro:macro name="robot_wheel" params="alignment *origin">
+
+
+<link name="wheel_${alignment}_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0 " rpy="0 0 0 "/>
+      <geometry>
+        <mesh filename="package://robot_description/meshes/${alignment}_tire.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.025" radius="0.0325"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" />
+      <mass value="0.049" />
+      <inertia ixx="3.07e-5" ixy="0.00" ixz="0.00"
+               iyy="3.07e-5" iyz="0.00"
+               izz="3.89e-5" />
+      </inertial>
+  </link>
+
+  <joint name="wheel_${alignment}_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_${alignment}_link"/>
+    <xacro:insert_block name="origin"/>
+    <axis xyz="0 0 -1"/>
+  </joint>
+	<gazebo reference="wheel_${alignment}_link">
+       	    <mu1 value="10.0"/>
+            <mu2 value="10.0"/>
+            <kp value="500000.0" />
+            <kd value="10.0" />
+            <minDepth>0.001</minDepth>
+            <maxVel>0.1</maxVel>
+            <fdir1>1 0 0</fdir1>
+            <material>Gazebo/Orange</material>
+        </gazebo>
+    </xacro:macro>
+</robot>
